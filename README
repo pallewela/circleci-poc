@@ -1,1 +1,10 @@
 CircleCI PoC
+============
+
+generate keypair:
+>openssl genrsa -out private.pem 2048
+>openssl rsa -in private.pem -outform PEM -pubout -out public.pem
+
+encrypt/decrypt:
+>openssl rsautl -encrypt -inkey public.pem -pubin -in plaintext.text -out encrypted-with-public.txt
+>openssl rsautl -decrypt  -inkey private.pem -in encrypted-with-public.txt
